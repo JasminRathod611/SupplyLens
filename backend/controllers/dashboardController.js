@@ -81,7 +81,7 @@ export const getDashboardStats = async (req, res) => {
             success: true,
             stats: {
                 totalProducts,
-                totalInventoryValue: `$${totalInventoryValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+                totalInventoryValue: `₹${totalInventoryValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
                 lowStockCount,
                 pendingReordersCount,
                 productsNeedingReorder,

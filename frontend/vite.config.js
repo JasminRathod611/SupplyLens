@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
-      '/api': 'http://localhost:5000' // Here replace the proxy to live deployed URL
+      '/api': 'http://localhost:5001' // Here replace the proxy to live deployed URL
     }
   }
 });

@@ -62,7 +62,7 @@ const Dashboard = () => {
         variants={{ animate: { transition: { staggerChildren: 0.08 } } }}
       >
         <StatCard label="Total Products" value={stats.totalProducts || 0} icon={Package} link="/dashboard/inventory" trend={12} />
-        <StatCard label="Total Inventory Value" value={stats.totalInventoryValue || '$0.00'} icon={Package} link="/dashboard/inventory" trend={4} />
+        <StatCard label="Total Inventory Value" value={stats.totalInventoryValue || '₹0.00'} icon={Package} link="/dashboard/inventory" trend={4} />
         <StatCard label="Overall Success Rate" value={stats.successRate || '0%'} icon={Users} link="/dashboard/suppliers" trend={2} />
       </motion.div>
 

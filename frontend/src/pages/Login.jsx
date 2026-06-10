@@ -60,7 +60,7 @@ const Login = () => {
           Welcome back
         </h2>
         <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginBottom: '28px' }}>
-          Log in to your SupplyLens account
+          Log in to your account
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">

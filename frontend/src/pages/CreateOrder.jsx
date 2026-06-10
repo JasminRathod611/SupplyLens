@@ -180,7 +180,7 @@ const CreateOrder = () => {
         <div className="flex justify-between items-center p-4 rounded-lg mt-4" style={{ background: 'var(--app-overlay)' }}>
           <span style={{ fontSize: '14px', fontWeight: 500, color: 'var(--app-text-muted)' }}>Total Order Amount</span>
           <span style={{ fontSize: '20px', fontWeight: 600, color: 'var(--app-text)', fontFamily: 'var(--font-mono)' }}>
-            ${totalAmount.toFixed(2)}
+            ₹{totalAmount.toFixed(2)}
           </span>
         </div>
 

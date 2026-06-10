@@ -1,168 +1,104 @@
-<div align="center">
-  <h1>🔍 SupplyLens</h1>
-  <p><strong>End-to-end supply chain visibility — powered by real-time data and intelligent analytics.</strong></p>
+# Supply Chain Management System
 
-  <!-- Badges -->
-  <p>
-    <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
-    <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
-    <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" alt="Express.js" />
-    <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
-    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-  </p>
-</div>
+A comprehensive inventory and supply chain management solution built for college project demonstration.
 
 ---
 
-## 📖 About the Project
+## Features
 
-**SupplyLens** is a comprehensive, full-stack supply-chain visibility platform designed to help modern businesses track, analyze, and optimize their supply chain operations in real time. Built with a scalable MERN architecture, it provides stakeholders with a bird's-eye view of their inventory, suppliers, and order lifecycles while enforcing strict security via Role-Based Access Control (RBAC).
-
-## ✨ Key Features
-
-- **📊 Centralized Dashboard:** Real-time analytics and data visualization (powered by Recharts).
-- **📦 Inventory & Product Management:** Seamless CRUD operations for tracking stock levels.
-- **🤝 Supplier Relations:** Manage vendor data and purchase lifecycles effectively.
-- **🔐 Secure Authentication:** Stateless JWT authentication stored in HttpOnly cookies, combined with Google OAuth 2.0 Single Sign-On.
-- **🛡️ Role-Based Access Control (RBAC):** Granular permissions ensuring users and administrators have scoped access to system features.
-- **⚡ Proactive Alerting:** System-generated notifications for critical supply chain events or low stock.
-- **✨ Premium UI/UX:** A highly responsive, glassmorphic interface utilizing Framer Motion and GSAP for micro-interactions.
+- **Inventory Management**: Real-time stock tracking with CRUD operations
+- **Supplier Management**: Vendor relationships with reliability scoring
+- **Purchase Orders**: Order lifecycle from creation to delivery
+- **Demand Forecasting**: Moving average & exponential smoothing algorithms
+- **Dashboard Analytics**: Business metrics and alerts overview
+- **Role-Based Access**: Admin, Manager, and Staff permissions
 
 ---
 
-## 🛠️ Technology Stack
+## Tech Stack
 
-| Category | Technologies |
-| :--- | :--- |
-| **Frontend** | React (Vite), Redux Toolkit, React Router DOM, TailwindCSS |
-| **Backend** | Node.js, Express.js |
-| **Database** | MongoDB, Mongoose ODM |
-| **Authentication**| JWT, Google Auth Library, bcrypt |
-| **Animations** | GSAP, Framer Motion, React Spring |
+| Component | Technology |
+|-----------|------------|
+| Frontend | React 19, Redux Toolkit, TailwindCSS, Framer Motion |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, Mongoose |
+| Auth | JWT, bcrypt, Google OAuth |
 
 ---
 
-## 🚀 Getting Started
-
-Follow these instructions to set up the project locally on your machine.
+## Quick Start
 
 ### Prerequisites
+- Node.js v18+
+- MongoDB (local or Atlas)
 
-Ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [MongoDB](https://www.mongodb.com/) (Local instance or MongoDB Atlas cluster)
-- `npm` or `pnpm`
+### Installation
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-username/SupplyLens.git
-cd SupplyLens
-```
-
-### 2. Backend Setup
-
-Open a terminal and navigate to the `backend` directory:
-
+**Backend:**
 ```bash
 cd backend
 npm install
+npm run dev
 ```
 
-**Environment Variables:**
-Create a `.env` file in the `backend` directory and add the following configuration:
+**Frontend:**
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
+### Environment Variables
+
+Create `backend/.env`:
 ```env
 PORT=5000
 FRONTEND_URL=http://localhost:5173
 MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_super_secret_jwt_key
-NODE_ENV=development
+JWT_SECRET=your_jwt_secret
 ```
-
-**Start the server:**
-```bash
-npm run dev
-```
-The backend server should now be running on `http://localhost:5000`.
-
-### 3. Frontend Setup
-
-Open a new terminal window and navigate to the `frontend` directory:
-
-```bash
-cd frontend
-npm install
-```
-
-**Start the development server:**
-```bash
-npm run dev
-```
-The application will be accessible at **http://localhost:5173**.
-
-### 4. Build for Production
-
-To build the frontend for production deployment:
-```bash
-cd frontend
-npm run build
-```
-*(Note: If deploying separately, ensure `VITE_API_URL` is set to the backend base URL before building).*
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
-```text
+```
 SupplyLens/
-├── backend/          # Express backend application & API
-│   ├── config/       # Database & environment configurations
-│   ├── controllers/  # Route logic & request handling
-│   ├── models/       # Mongoose database schemas
-│   ├── routes/       # API endpoints definitions
-│   └── server.js     # Backend entry point
-├── frontend/         # React (Vite) frontend application
-│   ├── src/
-│   │   ├── components/ # Reusable UI components
-│   │   ├── pages/      # Application views/pages
-│   │   ├── redux/      # State management slices & store
-│   │   └── ...
-│   └── index.html
-└── README.md
+├── backend/          # Express API server
+│   ├── controllers/  # Business logic
+│   ├── models/       # Database schemas
+│   ├── routes/       # API endpoints
+│   ├── middleware/   # Auth & authorization
+│   └── utils/        # Helper functions
+└── frontend/         # React application
+    ├── src/pages/    # Application views
+    ├── src/components/ # Reusable UI
+    └── src/redux/    # State management
 ```
 
 ---
 
-## 🔃 Contributing
+## API Endpoints
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+| Route | Methods | Description |
+|-------|---------|-------------|
+| `/api/auth` | POST | Register, login, logout |
+| `/api/products` | GET, POST, PUT, DELETE | Inventory management |
+| `/api/suppliers` | GET, POST, PUT, DELETE | Supplier management |
+| `/api/orders` | GET, POST, PUT | Purchase orders |
+| `/api/dashboard` | GET | Statistics & alerts |
+| `/api/forecast/:id` | GET | Demand prediction |
+| `/api/alerts` | GET, PUT | Notifications |
 
-### Workflow for Pull Requests (PR)
-
-1. **Fork the Project & Clone your fork**
-   ```bash
-   git clone https://github.com/your-username/SupplyLens.git
-   cd SupplyLens
-   ```
-2. **Create your Feature Branch**
-   ```bash
-   git checkout main
-   git pull origin main
-   git checkout -b feat/your-feature-name
-   ```
-3. **Commit your Changes** (Follow [Conventional Commits](https://www.conventionalcommits.org/))
-   ```bash
-   git commit -m "feat: add robust supplier dashboard component"
-   ```
-4. **Push to the Branch**
-   ```bash
-   git push origin feat/your-feature-name
-   ```
-5. **Open a Pull Request** on GitHub, providing a descriptive title and attaching screenshots if applicable.
+See [DOCUMENTATION.md](./DOCUMENTATION.md) for complete API details.
 
 ---
 
-<p align="center">
-  Made with ❤️ by the SupplyLens Team
-</p>
+## Demo Data
+
+To seed demo data for testing:
+```bash
+cd backend && node seed.js
+```
+
+Creates demo admin (admin@demo.com / password123) with sample suppliers, products, and orders.
