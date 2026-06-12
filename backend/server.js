@@ -43,3 +43,5 @@ app.use('/api/forecast', forecastRouter);
 app.listen(PORT, () => {
     console.log(`Server is running at port ${PORT}`);
 });
+
+export default app;
