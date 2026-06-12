@@ -77,6 +77,30 @@ const seedDatabase = async () => {
       user: adminUser._id
     });
 
+    const s4 = await Supplier.create({
+      name: 'Supreme Chemicals & Pharma',
+      contactPerson: 'Ramesh Kumar',
+      email: 'ramesh@supremechem.com',
+      phone: '9567890123',
+      address: 'Phase-3, Industrial Area, Baddi, Himachal Pradesh',
+      averageDeliveryDays: 4,
+      reliabilityScore: 90,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    const s5 = await Supplier.create({
+      name: 'Vardhaman Paper Mart',
+      contactPerson: 'Karan Shah',
+      email: 'karan@vardhamanpaper.com',
+      phone: '8456789012',
+      address: 'Chawri Bazar, New Delhi',
+      averageDeliveryDays: 3,
+      reliabilityScore: 95,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
     console.log('Creating products...');
     
     // Groceries Category
@@ -117,6 +141,34 @@ const seedDatabase = async () => {
       currentStock: 220,
       reorderPoint: 50,
       safetyStock: 40,
+      supplier: s1._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    const p9 = await Product.create({
+      name: 'Assam CTC Tea (1kg)',
+      sku: 'GROC-TEA-004',
+      category: 'Groceries',
+      description: 'Strong and aromatic premium Assam CTC tea dust',
+      price: 380.00,
+      currentStock: 310,
+      reorderPoint: 60,
+      safetyStock: 45,
+      supplier: s1._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    const p10 = await Product.create({
+      name: 'Pure Cow Ghee (1L)',
+      sku: 'GROC-GHE-005',
+      category: 'Groceries',
+      description: 'Danedar aromatic cow milk ghee',
+      price: 680.00,
+      currentStock: 75,
+      reorderPoint: 20,
+      safetyStock: 15,
       supplier: s1._id,
       organization: ORG_NAME,
       user: adminUser._id
@@ -165,6 +217,34 @@ const seedDatabase = async () => {
       user: adminUser._id
     });
 
+    const p11 = await Product.create({
+      name: 'HDMI 2.1 Braided Cable (1.5m)',
+      sku: 'ELEC-HDM-004',
+      category: 'Electronics',
+      description: '8K ultra high speed HDMI cable with gold-plated connectors',
+      price: 599.00,
+      currentStock: 110,
+      reorderPoint: 25,
+      safetyStock: 20,
+      supplier: s2._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    const p12 = await Product.create({
+      name: 'Portable Power Bank 20000mAh',
+      sku: 'ELEC-POW-005',
+      category: 'Electronics',
+      description: 'Compact external battery pack with fast-charging outputs',
+      price: 1899.00,
+      currentStock: 120,
+      reorderPoint: 30,
+      safetyStock: 20,
+      supplier: s2._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
     // Office Supplies Category
     const p7 = await Product.create({
       name: 'Premium A4 Copier Paper (500 Sheets)',
@@ -175,7 +255,7 @@ const seedDatabase = async () => {
       currentStock: 450,
       reorderPoint: 100,
       safetyStock: 80,
-      supplier: s3._id,
+      supplier: s5._id,
       organization: ORG_NAME,
       user: adminUser._id
     });
@@ -194,9 +274,80 @@ const seedDatabase = async () => {
       user: adminUser._id
     });
 
+    const p13 = await Product.create({
+      name: 'Whiteboard Markers (Pack of 4)',
+      sku: 'OFFC-MAR-003',
+      category: 'Office Supplies',
+      description: 'Dry erase vibrant markers (Black, Blue, Red, Green)',
+      price: 160.00,
+      currentStock: 12, // Low stock on purpose
+      reorderPoint: 25,
+      safetyStock: 15,
+      supplier: s3._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    const p14 = await Product.create({
+      name: 'Premium Gel Pens Box (20 count)',
+      sku: 'OFFC-PEN-004',
+      category: 'Office Supplies',
+      description: 'Super smooth smudge-proof waterproof ink gel pens',
+      price: 240.00,
+      currentStock: 80,
+      reorderPoint: 30,
+      safetyStock: 20,
+      supplier: s3._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    // Safety Equipment Category
+    const p15 = await Product.create({
+      name: 'Industrial Safety Helmet',
+      sku: 'SAFE-HEL-001',
+      category: 'Safety Equipment',
+      description: 'High-density polyethylene safety helmet with chin strap',
+      price: 450.00,
+      currentStock: 45,
+      reorderPoint: 15,
+      safetyStock: 10,
+      supplier: s4._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    const p16 = await Product.create({
+      name: 'High-Visibility Reflective Vest',
+      sku: 'SAFE-VES-002',
+      category: 'Safety Equipment',
+      description: 'Fluorescent green safety vest with high reflective strips',
+      price: 180.00,
+      currentStock: 6, // Low stock on purpose
+      reorderPoint: 20,
+      safetyStock: 15,
+      supplier: s4._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    const p17 = await Product.create({
+      name: 'Nitrile Disposable Gloves Box (100pcs)',
+      sku: 'SAFE-GLV-003',
+      category: 'Safety Equipment',
+      description: 'Powder-free textured medical-grade nitrile gloves',
+      price: 550.00,
+      currentStock: 95,
+      reorderPoint: 30,
+      safetyStock: 20,
+      supplier: s4._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
     console.log('Creating purchase orders...');
     
-    // PO 1: Delivered (Increases delivered count for Success Rate)
+    // PO 1: Delivered
     await PurchaseOrder.create({
       supplier: s1._id,
       items: [
@@ -205,25 +356,25 @@ const seedDatabase = async () => {
       ],
       totalAmount: 246000.00,
       status: 'delivered',
-      expectedDeliveryDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), // Delivered 5 days ago
+      expectedDeliveryDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
       organization: ORG_NAME,
       user: adminUser._id
     });
 
-    // PO 2: Delivered (Increases delivered count for Success Rate)
+    // PO 2: Delivered
     await PurchaseOrder.create({
       supplier: s3._id,
       items: [
-        { product: p7._id, quantity: 200, unitPrice: 300.00 }
+        { product: p8._id, quantity: 20, unitPrice: 600.00 }
       ],
-      totalAmount: 60000.00,
+      totalAmount: 12000.00,
       status: 'delivered',
-      expectedDeliveryDate: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000), // Delivered 10 days ago
+      expectedDeliveryDate: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000),
       organization: ORG_NAME,
       user: adminUser._id
     });
 
-    // PO 3: Delivered (Increases delivered count for Success Rate)
+    // PO 3: Delivered
     await PurchaseOrder.create({
       supplier: s2._id,
       items: [
@@ -231,12 +382,64 @@ const seedDatabase = async () => {
       ],
       totalAmount: 220000.00,
       status: 'delivered',
-      expectedDeliveryDate: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // Delivered 2 days ago
+      expectedDeliveryDate: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
       organization: ORG_NAME,
       user: adminUser._id
     });
 
-    // PO 4: Shipped (In Transit)
+    // PO 4: Delivered
+    await PurchaseOrder.create({
+      supplier: s1._id,
+      items: [
+        { product: p9._id, quantity: 100, unitPrice: 380.00 }
+      ],
+      totalAmount: 38000.00,
+      status: 'delivered',
+      expectedDeliveryDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    // PO 5: Delivered
+    await PurchaseOrder.create({
+      supplier: s2._id,
+      items: [
+        { product: p12._id, quantity: 50, unitPrice: 1899.00 }
+      ],
+      totalAmount: 94950.00,
+      status: 'delivered',
+      expectedDeliveryDate: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    // PO 6: Delivered
+    await PurchaseOrder.create({
+      supplier: s3._id,
+      items: [
+        { product: p14._id, quantity: 80, unitPrice: 240.00 }
+      ],
+      totalAmount: 19200.00,
+      status: 'delivered',
+      expectedDeliveryDate: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    // PO 7: Delivered
+    await PurchaseOrder.create({
+      supplier: s5._id,
+      items: [
+        { product: p7._id, quantity: 200, unitPrice: 310.00 }
+      ],
+      totalAmount: 62000.00,
+      status: 'delivered',
+      expectedDeliveryDate: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000),
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    // PO 8: Shipped (In Transit)
     await PurchaseOrder.create({
       supplier: s1._id,
       items: [
@@ -244,12 +447,25 @@ const seedDatabase = async () => {
       ],
       totalAmount: 80000.00,
       status: 'shipped',
-      expectedDeliveryDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000), // Arriving in 2 days
+      expectedDeliveryDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
       organization: ORG_NAME,
       user: adminUser._id
     });
 
-    // PO 5: Pending (Needs Approval)
+    // PO 9: Shipped (In Transit)
+    await PurchaseOrder.create({
+      supplier: s4._id,
+      items: [
+        { product: p15._id, quantity: 50, unitPrice: 450.00 }
+      ],
+      totalAmount: 22500.00,
+      status: 'shipped',
+      expectedDeliveryDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    // PO 10: Pending (Needs Approval)
     await PurchaseOrder.create({
       supplier: s2._id,
       items: [
@@ -257,7 +473,20 @@ const seedDatabase = async () => {
       ],
       totalAmount: 67500.00,
       status: 'pending',
-      expectedDeliveryDate: new Date(Date.now() + 6 * 24 * 60 * 60 * 1000), // Scheduled in 6 days
+      expectedDeliveryDate: new Date(Date.now() + 6 * 24 * 60 * 60 * 1000),
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    // PO 11: Pending (Needs Approval)
+    await PurchaseOrder.create({
+      supplier: s4._id,
+      items: [
+        { product: p16._id, quantity: 50, unitPrice: 180.00 }
+      ],
+      totalAmount: 9000.00,
+      status: 'pending',
+      expectedDeliveryDate: new Date(Date.now() + 8 * 24 * 60 * 60 * 1000),
       organization: ORG_NAME,
       user: adminUser._id
     });
@@ -296,6 +525,17 @@ const seedDatabase = async () => {
       organization: ORG_NAME
     });
 
+    await StockMovement.create({
+      product: p9._id,
+      type: 'in',
+      quantity: 100,
+      previousStock: 210,
+      newStock: 310,
+      reason: 'Inbound PO Shipment #PO-1032',
+      user: adminUser._id,
+      organization: ORG_NAME
+    });
+
     console.log('Creating notifications...');
     await Notification.create({
       type: 'LOW_STOCK',
@@ -317,9 +557,27 @@ const seedDatabase = async () => {
 
     await Notification.create({
       type: 'LOW_STOCK',
+      priority: 'HIGH',
+      message: 'High-Visibility Reflective Vest is critically low (6 < 20).',
+      productId: p16._id,
+      read: false,
+      organization: ORG_NAME
+    });
+
+    await Notification.create({
+      type: 'LOW_STOCK',
       priority: 'MEDIUM',
       message: 'Heavy Duty Stapler & Pin Set is close to stockout (5 < 15).',
       productId: p8._id,
+      read: true,
+      organization: ORG_NAME
+    });
+
+    await Notification.create({
+      type: 'LOW_STOCK',
+      priority: 'MEDIUM',
+      message: 'Whiteboard Markers (Pack of 4) is running low (12 < 25).',
+      productId: p13._id,
       read: true,
       organization: ORG_NAME
     });
