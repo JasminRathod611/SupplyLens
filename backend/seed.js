@@ -41,36 +41,36 @@ const seedDatabase = async () => {
     });
 
     console.log('Creating suppliers...');
-    const supplier1 = await Supplier.create({
-      name: 'Global Foods Inc',
-      contactPerson: 'Jane Doe',
-      email: 'jane@globalfoods.com',
-      phone: '555-0101',
-      address: '123 Warehouse Row, NY',
+    const s1 = await Supplier.create({
+      name: 'Hindustan Distributors Ltd',
+      contactPerson: 'Amit Sharma',
+      email: 'amit@hindustandist.com',
+      phone: '9876543210',
+      address: 'Plot 45, Sector 18, Gurugram, Haryana',
       averageDeliveryDays: 3,
-      reliabilityScore: 94,
+      reliabilityScore: 96,
       organization: ORG_NAME,
       user: adminUser._id
     });
 
-    const supplier2 = await Supplier.create({
-      name: 'Prime Electronics',
-      contactPerson: 'John Smith',
-      email: 'john@primeelec.com',
-      phone: '555-0102',
-      address: '456 Tech Park, CA',
-      averageDeliveryDays: 7,
-      reliabilityScore: 88,
+    const s2 = await Supplier.create({
+      name: 'Saraswati Electronics',
+      contactPerson: 'Priya Patel',
+      email: 'priya@saraswatielec.co.in',
+      phone: '8765432109',
+      address: '102 SP Road, Bengaluru, Karnataka',
+      averageDeliveryDays: 5,
+      reliabilityScore: 92,
       organization: ORG_NAME,
       user: adminUser._id
     });
 
-    const supplier3 = await Supplier.create({
-      name: 'Acme Logistics',
-      contactPerson: 'Sarah Connor',
-      email: 'sarah@acme.com',
-      phone: '555-0103',
-      address: '789 Route Ave, TX',
+    const s3 = await Supplier.create({
+      name: 'Apex Packaging & Logistics',
+      contactPerson: 'Vikram Singh',
+      email: 'vikram@apexlogistics.com',
+      phone: '7654321098',
+      address: 'GIDC Industrial Estate, Vadodara, Gujarat',
       averageDeliveryDays: 2,
       reliabilityScore: 98,
       organization: ORG_NAME,
@@ -78,83 +78,186 @@ const seedDatabase = async () => {
     });
 
     console.log('Creating products...');
+    
+    // Groceries Category
     const p1 = await Product.create({
-      name: 'Basmati Rice 25kg',
-      sku: 'FOOD-001',
+      name: 'Basmati Rice Premium (25kg)',
+      sku: 'GROC-BAS-001',
       category: 'Groceries',
-      description: 'Premium long grain basmati rice',
-      price: 45.00,
-      currentStock: 142,
-      reorderPoint: 50,
-      safetyStock: 100,
-      supplier: supplier1._id,
+      description: 'Aged long grain premium Basmati Rice',
+      price: 1850.00,
+      currentStock: 150,
+      reorderPoint: 40,
+      safetyStock: 30,
+      supplier: s1._id,
       organization: ORG_NAME,
       user: adminUser._id
     });
 
     const p2 = await Product.create({
-      name: 'Sunflower Oil 15L',
-      sku: 'FOOD-002',
+      name: 'Refined Sunflower Oil (15L)',
+      sku: 'GROC-SUN-002',
       category: 'Groceries',
-      description: 'Refined sunflower cooking oil',
-      price: 32.50,
-      currentStock: 18,
-      reorderPoint: 30,
-      safetyStock: 50,
-      supplier: supplier1._id,
+      description: 'Double filtered healthy cooking sunflower oil',
+      price: 1650.00,
+      currentStock: 12, // Low stock on purpose
+      reorderPoint: 25,
+      safetyStock: 15,
+      supplier: s1._id,
       organization: ORG_NAME,
       user: adminUser._id
     });
 
     const p3 = await Product.create({
-      name: 'Wireless Keyboard',
-      sku: 'ELEC-001',
-      category: 'Electronics',
-      description: 'Mechanical wireless keyboard',
-      price: 85.00,
-      currentStock: 120,
-      reorderPoint: 40,
-      safetyStock: 80,
-      supplier: supplier2._id,
+      name: 'Organic Wheat Flour (10kg)',
+      sku: 'GROC-WHT-003',
+      category: 'Groceries',
+      description: '100% whole wheat stone-ground chakki fresh atta',
+      price: 460.00,
+      currentStock: 220,
+      reorderPoint: 50,
+      safetyStock: 40,
+      supplier: s1._id,
       organization: ORG_NAME,
       user: adminUser._id
     });
 
+    // Electronics Category
     const p4 = await Product.create({
-      name: 'USB-C Cable 2m',
-      sku: 'ELEC-002',
+      name: 'Logitech Wireless Keyboard & Mouse',
+      sku: 'ELEC-LOG-001',
       category: 'Electronics',
-      description: 'Fast charging braided cable',
-      price: 12.00,
-      currentStock: 4,
+      description: 'Ergonomic multi-device silent wireless keyboard combo',
+      price: 2499.00,
+      currentStock: 85,
+      reorderPoint: 20,
+      safetyStock: 15,
+      supplier: s2._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    const p5 = await Product.create({
+      name: 'Braided Fast Charging USB-C Cable (2m)',
+      sku: 'ELEC-CAB-002',
+      category: 'Electronics',
+      description: 'Heavy duty 100W PD nylon braided charging cable',
+      price: 499.00,
+      currentStock: 8, // Low stock on purpose
+      reorderPoint: 30,
+      safetyStock: 20,
+      supplier: s2._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    const p6 = await Product.create({
+      name: 'Dell 24" IPS Full HD Monitor',
+      sku: 'ELEC-DEL-003',
+      category: 'Electronics',
+      description: 'Professional monitor with height-adjustable stand',
+      price: 11499.00,
+      currentStock: 40,
+      reorderPoint: 10,
+      safetyStock: 8,
+      supplier: s2._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    // Office Supplies Category
+    const p7 = await Product.create({
+      name: 'Premium A4 Copier Paper (500 Sheets)',
+      sku: 'OFFC-PAP-001',
+      category: 'Office Supplies',
+      description: 'High brightness 75GSM multipurpose copier paper',
+      price: 320.00,
+      currentStock: 450,
       reorderPoint: 100,
-      safetyStock: 200,
-      supplier: supplier2._id,
+      safetyStock: 80,
+      supplier: s3._id,
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    const p8 = await Product.create({
+      name: 'Heavy Duty Stapler & Pin Set',
+      sku: 'OFFC-STP-002',
+      category: 'Office Supplies',
+      description: 'All-metal desk stapler with reload indicator and 5000 staples',
+      price: 650.00,
+      currentStock: 5, // Low stock on purpose
+      reorderPoint: 15,
+      safetyStock: 10,
+      supplier: s3._id,
       organization: ORG_NAME,
       user: adminUser._id
     });
 
     console.log('Creating purchase orders...');
+    
+    // PO 1: Delivered (Increases delivered count for Success Rate)
     await PurchaseOrder.create({
-      supplier: supplier1._id,
+      supplier: s1._id,
       items: [
-        { product: p2._id, quantity: 50, unitPrice: 30.00 }
+        { product: p1._id, quantity: 100, unitPrice: 1800.00 },
+        { product: p3._id, quantity: 150, unitPrice: 440.00 }
       ],
-      totalAmount: 1500.00,
-      status: 'shipped',
-      expectedDeliveryDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // 3 days from now
+      totalAmount: 246000.00,
+      status: 'delivered',
+      expectedDeliveryDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), // Delivered 5 days ago
       organization: ORG_NAME,
       user: adminUser._id
     });
 
+    // PO 2: Delivered (Increases delivered count for Success Rate)
     await PurchaseOrder.create({
-      supplier: supplier2._id,
+      supplier: s3._id,
       items: [
-        { product: p4._id, quantity: 200, unitPrice: 10.00 }
+        { product: p7._id, quantity: 200, unitPrice: 300.00 }
       ],
-      totalAmount: 2000.00,
+      totalAmount: 60000.00,
+      status: 'delivered',
+      expectedDeliveryDate: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000), // Delivered 10 days ago
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    // PO 3: Delivered (Increases delivered count for Success Rate)
+    await PurchaseOrder.create({
+      supplier: s2._id,
+      items: [
+        { product: p6._id, quantity: 20, unitPrice: 11000.00 }
+      ],
+      totalAmount: 220000.00,
+      status: 'delivered',
+      expectedDeliveryDate: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // Delivered 2 days ago
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    // PO 4: Shipped (In Transit)
+    await PurchaseOrder.create({
+      supplier: s1._id,
+      items: [
+        { product: p2._id, quantity: 50, unitPrice: 1600.00 }
+      ],
+      totalAmount: 80000.00,
+      status: 'shipped',
+      expectedDeliveryDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000), // Arriving in 2 days
+      organization: ORG_NAME,
+      user: adminUser._id
+    });
+
+    // PO 5: Pending (Needs Approval)
+    await PurchaseOrder.create({
+      supplier: s2._id,
+      items: [
+        { product: p5._id, quantity: 150, unitPrice: 450.00 }
+      ],
+      totalAmount: 67500.00,
       status: 'pending',
-      expectedDeliveryDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days from now
+      expectedDeliveryDate: new Date(Date.now() + 6 * 24 * 60 * 60 * 1000), // Scheduled in 6 days
       organization: ORG_NAME,
       user: adminUser._id
     });
@@ -164,20 +267,31 @@ const seedDatabase = async () => {
       product: p1._id,
       type: 'in',
       quantity: 100,
-      previousStock: 42,
-      newStock: 142,
-      reason: 'Supplier Shipment',
+      previousStock: 50,
+      newStock: 150,
+      reason: 'Inbound PO Shipment #PO-1029',
       user: adminUser._id,
       organization: ORG_NAME
     });
 
     await StockMovement.create({
-      product: p3._id,
+      product: p4._id,
+      type: 'out',
+      quantity: 15,
+      previousStock: 100,
+      newStock: 85,
+      reason: 'Bulk Office Sale Invoice #SL-9932',
+      user: adminUser._id,
+      organization: ORG_NAME
+    });
+
+    await StockMovement.create({
+      product: p8._id,
       type: 'out',
       quantity: 10,
-      previousStock: 130,
-      newStock: 120,
-      reason: 'Sale',
+      previousStock: 15,
+      newStock: 5,
+      reason: 'Internal Inventory Allocation',
       user: adminUser._id,
       organization: ORG_NAME
     });
@@ -186,16 +300,26 @@ const seedDatabase = async () => {
     await Notification.create({
       type: 'LOW_STOCK',
       priority: 'HIGH',
-      message: 'USB-C Cable 2m has dropped below reorder point (4 < 100).',
-      productId: p4._id,
+      message: 'Refined Sunflower Oil (15L) has dropped below reorder threshold (12 < 25).',
+      productId: p2._id,
       read: false,
       organization: ORG_NAME
     });
 
     await Notification.create({
-      type: 'SUPPLIER_DELAY',
+      type: 'LOW_STOCK',
+      priority: 'HIGH',
+      message: 'Braided Fast Charging USB-C Cable (2m) has reached critical level (8 < 30).',
+      productId: p5._id,
+      read: false,
+      organization: ORG_NAME
+    });
+
+    await Notification.create({
+      type: 'LOW_STOCK',
       priority: 'MEDIUM',
-      message: 'Your demo environment has been successfully provisioned.',
+      message: 'Heavy Duty Stapler & Pin Set is close to stockout (5 < 15).',
+      productId: p8._id,
       read: true,
       organization: ORG_NAME
     });

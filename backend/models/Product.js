@@ -93,15 +93,15 @@ productSchema.pre('validate', function() {
         this.unitPrice = this.price;
     }
 
-    if (this.currentStock !== undefined && this.stockQuantity === undefined) {
+    if (this.currentStock !== undefined && (this.stockQuantity === undefined || this.stockQuantity === 0)) {
         this.stockQuantity = this.currentStock;
-    } else if (this.stockQuantity !== undefined && this.currentStock === undefined) {
+    } else if (this.stockQuantity !== undefined && (this.currentStock === undefined || this.currentStock === 0)) {
         this.currentStock = this.stockQuantity;
     }
 
-    if (this.minimumStockLevel !== undefined && this.lowStockThreshold === undefined) {
+    if (this.minimumStockLevel !== undefined && (this.lowStockThreshold === undefined || this.lowStockThreshold === 5)) {
         this.lowStockThreshold = this.minimumStockLevel;
-    } else if (this.lowStockThreshold !== undefined && this.minimumStockLevel === undefined) {
+    } else if (this.lowStockThreshold !== undefined && (this.minimumStockLevel === undefined || this.minimumStockLevel === 5)) {
         this.minimumStockLevel = this.lowStockThreshold;
     }
 
